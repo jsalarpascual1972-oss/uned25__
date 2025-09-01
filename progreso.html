@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Progreso — UNED+25</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body data-page="progreso">
+  
+  <header class="topbar">
+    <div class="container topbar__wrap">
+      <a class="brand" href="index.html"><span>UNED</span>+25</a>
+      <nav class="mainnav">
+        <a href="index.html" class="">Dashboard</a>
+        <a href="estudiar.html" class="">Estudiar</a>
+        <a href="progreso.html" class="active">Progreso</a>
+        <a href="calendario.html" class="">Calendario</a>
+        <a href="admin.html" id="adminLink" style="display:none">Admin</a>
+      </nav>
+      <div class="topbar__right">
+        <div class="days-pill" id="daysPill" title="Días restantes">0 días</div>
+        <button id="themeToggle" class="icon-btn" title="Tema">🌓</button>
+        <div class="user"><div class="avatar">U</div><span class="username">usuario</span></div>
+        <button id="logoutBtn" class="btn ghost">Salir</button>
+      </div>
+      <button class="menu-btn" id="menuBtn" aria-label="Abrir menú">☰</button>
+    </div>
+  </header>
+
+  <section class="container section">
+    <h1>Progreso general</h1>
+    <div class="grid">
+      <section class="card">
+        <h3>Temas completados (leídos)</h3>
+        <p class="score" id="gen_completed">0</p>
+      </section>
+      <section class="card">
+        <h3>Con nota ≥6</h3>
+        <p class="score" id="gen_passed">0</p>
+      </section>
+      <section class="card">
+        <h3>Total de temas</h3>
+        <p class="score" id="gen_total">0</p>
+      </section>
+      <section class="card">
+        <h3>Progreso global</h3>
+        <p class="score" id="gen_progress">0%</p>
+      </section>
+    </div>
+  </section>
+
+  <section class="container section">
+    <div class="tabs">
+      <div class="tab active">Materias</div>
+      <div class="tab">Logros</div>
+      <div class="tab">Estadísticas</div>
+    </div>
+    <div class="tabpanels">
+      <div id="panel_materias" class="active"></div>
+      <div id="panel_logros"></div>
+      <div id="panel_stats"></div>
+    </div>
+  </section>
+
+  <script src="app.js"></script>
+</body>
+</html>

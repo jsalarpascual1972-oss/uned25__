@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tema — UNED+25</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body data-page="topic">
+  
+  <header class="topbar">
+    <div class="container topbar__wrap">
+      <a class="brand" href="index.html"><span>UNED</span>+25</a>
+      <nav class="mainnav">
+        <a href="index.html" class="">Dashboard</a>
+        <a href="estudiar.html" class="active">Estudiar</a>
+        <a href="progreso.html" class="">Progreso</a>
+        <a href="calendario.html" class="">Calendario</a>
+        <a href="admin.html" id="adminLink" style="display:none">Admin</a>
+      </nav>
+      <div class="topbar__right">
+        <div class="days-pill" id="daysPill" title="Días restantes">0 días</div>
+        <button id="themeToggle" class="icon-btn" title="Tema">🌓</button>
+        <div class="user"><div class="avatar">U</div><span class="username">usuario</span></div>
+        <button id="logoutBtn" class="btn ghost">Salir</button>
+      </div>
+      <button class="menu-btn" id="menuBtn" aria-label="Abrir menú">☰</button>
+    </div>
+  </header>
+
+  <section class="container section">
+    <div class="topic-header">
+      <h1 id="topicTitle">Tema</h1>
+      <div class="highlight-bar">
+        <button id="hlBtn" class="btn ghost">Subrayar selección</button>
+        <button id="readBtn" class="btn">Marcar como leído</button>
+        <a class="btn ghost" href="javascript:history.back()">Volver</a>
+      </div>
+    </div>
+    <div class="grid-2">
+      <article class="card">
+        <div id="content" style="min-height: 120px;"></div>
+        <hr style="margin:16px 0;">
+        <h3>Test del tema</h3>
+        <div id="topicQuiz"></div>
+        <p class="muted">Nota: <span class="score" id="topicQuizScore">0</span>/10</p>
+        <button id="topicQuizSubmit" class="btn">Corregir test</button>
+        <hr style="margin:16px 0;">
+        <h3>Examen de desarrollar</h3>
+        <p class="muted" id="essayPrompt"></p>
+        <textarea id="essayText" rows="6" class="input" placeholder="Escribe aquí tu desarrollo..."></textarea>
+        <p class="muted">Nota: <span class="score" id="essayScore">0</span>/10</p>
+        <button id="essaySubmit" class="btn">Corregir desarrollo</button>
+        <hr style="margin:16px 0;">
+        <button id="evaluateBtn" class="btn accent">Evaluar y desbloquear siguiente</button>
+      </article>
+      <aside>
+        <div class="sidebox">
+          <h4>🎯 Puntos clave</h4>
+          <ul id="keypoints" class="keypoints"></ul>
+        </div>
+        <div class="sidebox" style="margin-top:12px;">
+          <h4>🧩 Conceptos importantes</h4>
+          <ul id="concepts" class="concepts"></ul>
+        </div>
+      </aside>
+    </div>
+  </section>
+  <script src="app.js"></script>
+</body>
+</html>

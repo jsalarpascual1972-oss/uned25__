@@ -3,153 +3,83 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>UNED+25 — Dashboard de Estudio</title>
-  <meta name="description" content="Panel de estudio con pomodoro, quiz rápido y progreso.">
+  <title>UNED+25 — Dashboard</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="./styles.css">
+  <link rel="stylesheet" href="styles.css">
 </head>
-<body>
-  <!-- Topbar -->
+<body data-page="dashboard">
+  
   <header class="topbar">
     <div class="container topbar__wrap">
-      <a class="brand" href="#"><span>UNED</span>+25</a>
+      <a class="brand" href="index.html"><span>UNED</span>+25</a>
       <nav class="mainnav">
-        <a class="active" href="#">Dashboard</a>
-        <a href="#estudiar">Estudiar</a>
-        <a href="#progreso">Progreso</a>
-        <a href="#calendario">Calendario</a>
+        <a href="index.html" class="active">Dashboard</a>
+        <a href="estudiar.html" class="">Estudiar</a>
+        <a href="progreso.html" class="">Progreso</a>
+        <a href="calendario.html" class="">Calendario</a>
+        <a href="admin.html" id="adminLink" style="display:none">Admin</a>
       </nav>
       <div class="topbar__right">
-        <div class="days-pill" id="daysPill">0 días</div>
-        <button id="themeToggle" class="icon-btn" title="Tema claro/oscuro" aria-label="Cambiar tema">
-          <!-- sun/moon -->
-          <svg id="iconTheme" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-               stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <circle cx="12" cy="12" r="4"></circle>
-            <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"></path>
-          </svg>
-        </button>
-        <div class="user">
-          <span class="badge">Student</span>
-          <div class="avatar" aria-label="Perfil">V</div>
-          <span class="username">vegaismaa</span>
-        </div>
+        <div class="days-pill" id="daysPill" title="Días restantes">0 días</div>
+        <button id="themeToggle" class="icon-btn" title="Tema">🌓</button>
+        <div class="user"><div class="avatar">U</div><span class="username">usuario</span></div>
+        <button id="logoutBtn" class="btn ghost">Salir</button>
       </div>
       <button class="menu-btn" id="menuBtn" aria-label="Abrir menú">☰</button>
     </div>
   </header>
 
-  <!-- Info banner -->
   <div class="container">
-    <div class="banner">
-      <div class="banner__icon">📚</div>
-      <div class="banner__text">Acceso de estudiante — Puedes usar todas las funciones de estudio</div>
-    </div>
+    <div class="banner"><div class="banner__icon">📚</div><div class="banner__text">Acceso de estudiante — Puedes usar todas las funciones de estudio</div></div>
   </div>
 
-  <!-- Hero / Welcome -->
   <section class="container hero">
     <div class="hero__bg"></div>
     <div class="hero__content">
       <h1>¡Bienvenid@!</h1>
       <div class="stats">
-        <div class="stat">
-          <div class="label">Progreso Global</div>
-          <div class="value"><span id="globalProgress">0</span>%</div>
-        </div>
-        <div class="stat">
-          <div class="label">Temas Desbloqueados</div>
-          <div class="value"><span id="unlocked">1</span>/2</div>
-        </div>
-        <div class="stat">
-          <div class="label">Temas Completados</div>
-          <div class="value" id="completed">0</div>
-        </div>
-        <div class="stat">
-          <div class="label">Con Nota ≥6</div>
-          <div class="value" id="passed">0</div>
-        </div>
+        <div class="stat"><div class="label">Progreso Global</div><div class="value"><span id="globalProgress">0</span>%</div></div>
+        <div class="stat"><div class="label">Temas Desbloqueados</div><div class="value"><span id="unlocked">0</span></div></div>
+        <div class="stat"><div class="label">Temas Completados</div><div class="value" id="completed">0</div></div>
+        <div class="stat"><div class="label">Con Nota ≥6</div><div class="value" id="passed">0</div></div>
       </div>
     </div>
   </section>
 
-  <!-- Main grid -->
   <main class="container grid">
-    <!-- Pomodoro -->
     <section class="card">
-      <h2>Sesión Pomodoro</h2>
-      <p class="muted">Mantén tu concentración</p>
-      <div class="timer" id="timer">25:00</div>
-      <div class="timer__actions">
-        <button class="btn" id="startBtn">Comenzar</button>
-        <button class="btn ghost" id="resetBtn">Reset</button>
-      </div>
-      <div class="chips">
-        <button class="chip" data-min="25">25'</button>
-        <button class="chip" data-min="15">15'</button>
-        <button class="chip" data-min="5">5'</button>
-      </div>
-      <p id="pomoMsg" class="pomo-msg" role="status" aria-live="polite"></p>
+      <h2>Tiempo total</h2>
+      <p class="muted">Tiempo activo en el apartado Estudiar</p>
+      <div class="score" id="studyTime">0s</div>
+      <h2 style="margin-top:16px;">Racha actual</h2>
+      <p class="muted">Días seguidos estudiando</p>
+      <div class="score" id="streakDays">0</div>
     </section>
 
-    <!-- Quick Quiz -->
     <section class="card">
       <h2>Quiz Rápido</h2>
-      <p class="muted">Pon a prueba tus conocimientos</p>
-      <div class="progress-bar">
-        <div id="quizProgress" class="progress"></div>
-      </div>
+      <p class="muted">Generado automáticamente de lo que ya has estudiado</p>
+      <div class="progress-bar"><div class="progress" id="quizProgress" style="width:0%"></div></div>
       <div class="progress-label"><span id="quizPercent">0</span>%</div>
       <button class="btn accent" id="newQuizBtn">Nuevo Quiz</button>
     </section>
 
-    <!-- Achievements -->
     <section class="card">
       <h2>Logros Recientes</h2>
-      <p class="muted">Celebra tus éxitos</p>
+      <p class="muted">Racha, quiz, estudio...</p>
       <ul id="achievements" class="achievements">
-        <li class="empty">Sin logros todavía. ¡Completa un Pomodoro o aprueba un quiz!</li>
+        <li class="empty">Sin logros aún.</li>
       </ul>
     </section>
   </main>
 
-  <!-- Floating Action Button -->
-  <button class="fab" id="fab" aria-label="Acciones rápidas">＋</button>
-  <div class="fab-menu" id="fabMenu" aria-hidden="true">
-    <button class="fab-item" data-action="note">Nueva nota</button>
-    <button class="fab-item" data-action="task">Crear tarea</button>
-    <button class="fab-item" data-action="quiz">Nuevo quiz</button>
-  </div>
+  <section class="container section">
+    <h2 style="margin:6px 0 12px;">Progreso por materias</h2>
+    <div id="subjectProgress" class="grid"></div>
+  </section>
 
-  <!-- Modal Quiz -->
-  <dialog id="quizModal" class="modal">
-    <form method="dialog" class="modal__content">
-      <h3>Quiz Rápido</h3>
-      <div id="quizContainer"></div>
-      <div class="modal__actions">
-        <button class="btn ghost" value="cancel">Cancelar</button>
-        <button class="btn" id="submitQuizBtn" value="ok">Enviar</button>
-      </div>
-    </form>
-  </dialog>
-
-  <!-- Modal Ajustes -->
-  <dialog id="settingsModal" class="modal">
-    <form method="dialog" class="modal__content">
-      <h3>Ajustes rápidos</h3>
-      <label class="form-label">Fecha del examen
-        <input type="date" id="examDate">
-      </label>
-      <p class="muted">Usamos esta fecha para calcular los <strong>días restantes</strong> (arriba a la derecha).</p>
-      <div class="modal__actions">
-        <button class="btn ghost" value="cancel">Cerrar</button>
-        <button class="btn" id="saveSettingsBtn" value="ok">Guardar</button>
-      </div>
-    </form>
-  </dialog>
-
-  <script src="./script.js"></script>
+  <script src="app.js"></script>
 </body>
 </html>

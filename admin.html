@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Admin — UNED+25</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body data-page="admin">
+  <header class="topbar">
+    <div class="container topbar__wrap">
+      <a class="brand" href="index.html"><span>UNED</span>+25</a>
+      <nav class="mainnav">
+        <a href="index.html">Dashboard</a>
+        <a href="estudiar.html">Estudiar</a>
+        <a href="progreso.html">Progreso</a>
+        <a href="calendario.html">Calendario</a>
+        <a class="active" href="admin.html">Admin</a>
+      </nav>
+      <div class="topbar__right">
+        <div class="user"><div class="avatar">A</div><span class="username">admin</span></div>
+        <button id="logoutBtn" class="btn ghost">Salir</button>
+      </div>
+    </div>
+  </header>
+
+  <section class="container section">
+    <h1>Panel de Administración</h1>
+    <div class="card">
+      <h3>Alta de usuarios</h3>
+      <form id="addUserForm" class="row" style="display:grid; grid-template-columns: 1fr 1fr 1fr auto; gap:8px;">
+        <input id="newUser" class="input" placeholder="usuario" required>
+        <input id="newPass" type="password" class="input" placeholder="contraseña" required>
+        <select id="newRole" class="input">
+          <option value="viewer">viewer</option>
+          <option value="student" selected>student</option>
+          <option value="admin">admin</option>
+        </select>
+        <button class="btn" type="submit">Crear</button>
+      </form>
+    </div>
+
+    <div class="card" style="margin-top:12px;">
+      <h3>Usuarios registrados</h3>
+      <table class="tbl">
+        <thead><tr><th>Usuario</th><th>Rol</th><th>Alta</th><th>Acciones</th></tr></thead>
+        <tbody id="userRows"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,31 +1,16 @@
-# UNED+25 — Dashboard de Estudio
+# UNED+25 — Estudio (v3.1)
 
-Página estática inspirada en el diseño que enviaste: topbar, tarjeta de bienvenida con gradiente, estadísticas, Pomodoro funcional, Quiz rápido con modal, logros y FAB. Ligera y lista para **Vercel/Netlify/GitHub Pages**.
+**Arreglos y mejoras solicitadas**
+- Navegación **real**: `Estudiar`, `Progreso` y `Calendario` son páginas separadas y funcionan.
+- UI alineada: topbar centrado, hero y tarjetas con grid consistente.
+- Eliminado **"Student"** del header y el **botón +** flotante.
+- Dashboard enlazado al progreso del apartado **Estudiar** (global = media por materia; completados = leídos; racha y tiempo activos).
+- Estudiar: asignatura **Nociones Jurídicas Básicas** con temas bloqueados hasta aprobar (media ≥6 + leído).
+- Tema: subrayado, test y desarrollo con evaluación.
+- Progreso: general + pestañas (Materias / Logros / Estadísticas).
+- Calendario básico para apuntar sesiones (localStorage).
 
-## Estructura
-```
-/
-├─ index.html
-├─ styles.css
-└─ script.js
-```
+> Nota: es demo estática, datos en `localStorage`. Para multiusuario real necesitarás backend (Supabase/Firebase).
 
-## Desarrollo local
-Abre `index.html` en tu navegador.
-
-## Deployment
-- **Vercel**: importa el repo desde GitHub y despliega (no requiere build).
-- **Netlify**: New site → Git → elige repo. Build command: _none_. Publish directory: `/`.
-- **GitHub Pages**: Settings → Pages → Source: `main` → `(root)`.
-
-## Funciones
-- **Pomodoro**: 25/15/5 min, pausa/continuar, mensaje al completar y logro.
-- **Quiz**: modal con 5 preguntas aleatorias, calcula aciertos, actualiza barra de progreso y logros.
-- **Logros**: se añaden al completar Pomodoro o aprobar quiz.
-- **Días restantes**: haz click en la pastilla “0 días” para definir la fecha del examen.
-- **Tema oscuro/claro**: botón en la topbar; guarda preferencia en `localStorage`.
-
-## Personaliza
-- Colores en `:root` de `styles.css`.
-- Preguntas del quiz en `QUESTIONS` de `script.js`.
-- Textos de la interfaz en `index.html`.
+## Archivos
+`index.html`, `estudiar.html`, `tema.html`, `progreso.html`, `calendario.html`, `admin.html`, `login.html`, `styles.css`, `app.js`.
